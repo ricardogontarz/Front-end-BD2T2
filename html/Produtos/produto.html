@@ -20,6 +20,10 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <!--DataTable-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
     
 
     <link href="../Produtos/produto.css" rel="stylesheet">
@@ -38,10 +42,8 @@
       
     <div id="conteudo">
         <div class="cabecalho">
-            <h1 class="nome-empresa"><a href="../Dashboard/dashboard.html" style="text-decoration: none; color: inherit;">WeShoes</a></h1>
+            <h1 class="nome-empresa"><a href="../Dashboard/dashboard.html" style="text-decoration: none; color: inherit;">Nome da Empresa</a></h1>
             <div class="botoes" style="display: flex;">
-            <button id="btnAdicao" class="btn btn-primary btn-lg" role="button" onclick="location.href='adicionaProduto.html'">Adicionar Produto</button>
-            <button  id="gerarPDFTabela" class="btn btn-secondary btn-lg" role="button" >Gerar Relatório</button><br><br>
             <!-- Seu JavaScript -->
 <script>
     document.getElementById('gerarPDFTabela').addEventListener('click', function() {
@@ -60,7 +62,7 @@
         <hr>
         <p class="subtitulo">Produtos</p>
 
-        <table class="table table-bordered " id="tabelaPDF">
+        <table class="table table-bordered " id="tabelaProdutos">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -76,110 +78,7 @@
             </tbody>
         </table>
 
-        <!-- Modal de confirmação -->
-        <div class="modal fade" id="modalConfirmacao" tabindex="-1" role="dialog" aria-labelledby="modalConfirmacaoLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalConfirmacaoLabel">Confirmação de Exclusão</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        Tem certeza de que deseja excluir o produto com o ID <span id="produtoIdExclusao"></span>?
-                    </div>
-                    <div class="modal-footer">
-                        <form action="deletar.php" method="POST">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <input type="hidden" name="produto_id" id="produto_id_para_excluir">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-danger" id="confirmarExclusao">Confirmar Exclusão</button>
-                        </form>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Modal de edição -->
-        <div class="modal fade" id="modalEdicao" tabindex="-1" role="dialog" aria-labelledby="modalEdicaoLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalEdicaoLabel">Editar Produto</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form  id="editarProdutoForm" method="POST" action="atualiza.php">
-                        <input type="hidden" name="_method" value="PUT">
-                        <div class="modal-body">
-                            Insira os dados que deseja alterar do produto com ID <span id="produtoIdEdicao"></span>?
-                            <h1 class="h3 mb-3 fw-normal">Editar Produto</h1>
-                            <label for="cliente_id">ID do Produto:</label> <br>
-                            <input type="text" name="produto_id" id="produto_id" required><br>
-
-                            <label for="floatingInput">Nome do Produto</label>
-                            <input type="text" name="nome" class="form-control" id="nome_form_editar" required placeholder="Digite o nome">
-
-                            <label for "floatingInput">Descrição do Produto</label>
-                            <input type="text" name="descricao" class="form-control" id="descricao_form_editar" required placeholder="Digite a descrição">
-
-                            <label for="floatingInput">Preço do Produto</label>
-                            <input type="number" name="preco" class="form-control" id="preco_form_editar" required placeholder="Digite o preço" step="0.01">
-
-                            <label for="floatingInput">Quantidade do Produto</label>
-                            <input type="number" name="quantidade_estoque" class="form-control" id="quantidade_estoque_form_editar" required placeholder="Digite a quantidade no estoque">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-danger" id="confirmarEdicao">Confirmar Edição</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal de adição -->
-        <div class="modal fade" id="modalAdicao" tabindex="-1" role="dialog" aria-labelledby="modalAdicaoLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalAdicaoLabel">Adicionar Produto</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form id="adicionarProdutoForm" method="post" action="/vendas/php/api/produto.php">
-                        <div class="modal-body">
-                            Insira os dados que deseja
-                            <h1 class="h3 mb-3 fw-normal">Adiciona Produto</h1>
-
-                            <label for="floatingInput">Nome do Produto</label>
-                            <input type="text" name="nome" class="form-control" id="nome_form_adicionar" required placeholder="Digite o nome">
-
-                            <label for "floatingInput">Descrição do Produto</label>
-                            <input type="text" name="descricao" class="form-control" id="descricao_form_adicionar" required placeholder="Digite a descrição">
-
-                            <label for="floatingInput">Preço do Produto</label>
-                            <input type="number" name="preco" class="form-control" id="preco_form_adicionar" required placeholder="Digite o preço" step="0.01">
-
-                            <label for="floatingInput">Quantidade do Produto</label>
-                            <input type="number" name="quantidade_estoque" class="form-control" id="quantidade_estoque_form_adicionar" required placeholder="Digite a quantidade no estoque">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-danger" id="confirmarAdicao">Confirmar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-<!-- Inclua a biblioteca jsPDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 
 <!-- Inclua seu arquivo "produto.js" após a inclusão da biblioteca jsPDF -->
 <script src="../Produtos/produto.js"></script>

@@ -1,8 +1,6 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // URL da API
-    const API_URL = 'C:/xampp/htdocs/vendas/php/api/produto/lista.php';
 
 
+/*
     // Elemento da tabela de produtos
     const tabelaProdutos = document.getElementById('tabelaProdutos');
 
@@ -113,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
     carregarProdutos();
 
 
-});
+}); */
 
 const navbar = document.getElementById('navbar');
 const conteudo = document.getElementById('conteudo');
@@ -121,25 +119,10 @@ const toggleButton = document.getElementById('toggleButton');
 
 toggleButton.addEventListener('click', () => {
     navbar.classList.toggle('open');
-    conteudo.style.marginLeft = navbar.classList.contains('open') ? '250px' : '0';
+    conteudo.style.marginLeft = navbar.classList.contains('open') ? '12rem' : '0';
 });
 
-const btnEditar = document.getElementsByClassName('.edita');
-
-const btnPDF = document.getElementById('gerarPDFTabela');
-btnPDF.addEventListener('click', () => {
-    // Criação do PDF usando jsPDF e html2pdf
-    const pdfElement = document.getElementById('tabelaPDF');
-
-    const options = {
-        margin: [10,10,10,10],
-        filename: "tabelaProdutos.pdf",
-        html2canvas: {scale: 2},
-        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-
-    };
-    html2pdf().set(options).from(pdfElement).save();
-});
+let tabela = new DataTable('#tabelaVendas')
 
 // produto.js
 
