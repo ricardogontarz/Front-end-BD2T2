@@ -12,10 +12,14 @@
   left: 0;
   height: 100%;
   padding: 30px;
+  overflow: hidden;
+  transition: width 0.5s, opacity 0.3s; /* Duração mais curta ao fechar */
 }
 
 #navbar.open {
   width: 250px;
+  opacity: 1;
+  transition: width 0.5s, opacity 0.8s; /* Duração mais longa ao abrir */
 }
 
 .ul-navbar {
@@ -23,21 +27,28 @@
   line-height: 2.5rem;
   list-style: none;
   padding: 0;
-  overflow: hidden;
 }
 
 .li-navbar {
   margin: 10px 0;
   font-size: 1.3rem;
+  opacity: 0;
+  transition: opacity 0.1s; /* Duração mais longa ao abrir */
+}
+
+#navbar.open .li-navbar {
+  opacity: 1;
+  transition: opacity 3s; /* Duração mais curta ao fechar */
 }
 
 .a-navbar {
   text-decoration: none;
   color: #d2d2d2;
-  &:hover{
-    text-decoration: none;
-    color: white;
-  }
+}
+
+.a-navbar:hover {
+  text-decoration: none;
+  color: white;
 }
 
 #toggleButton {
@@ -50,6 +61,7 @@
   right: 10px;
   z-index: 1;
 }
+
 /*Aqui termina o CSS da NAVBAR*/
 
 #conteudo {
@@ -90,4 +102,39 @@ hr {
 
 .botoes button {
   margin-right: 20px;
+}
+
+
+form{
+  background: #F5F5F5;
+  padding: 4rem;
+  border-radius: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}  
+.inputs-form {
+  display: inline;
+}
+
+.backup_div{
+margin-top: 40rem;
+}
+
+.btn_delete {
+  color: red; /* Cor do texto */
+}
+
+/* Efeito hover */
+.btn_delete:hover {
+  background-color: whitesmoke; /* Cor diferente ao passar o mouse */
+  color: darkred;
+}
+
+.btn_lista{
+  color: gray;
+}
+
+.btn_lista:hover{
+  background-color: whitesmoke; /* Cor diferente ao passar o mouse */
+  color: darkgray;
 }

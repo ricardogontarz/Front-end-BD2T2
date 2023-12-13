@@ -25,8 +25,6 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
     
-    <!--icons-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <link href="../Produtos/produto.css" rel="stylesheet">
 </head>
@@ -41,7 +39,7 @@
             <li class="li-navbar"><a class="a-navbar" href="../Fornecedores/fornecedores.html"><i class="bi bi-speedometer" style="padding-right: 1.2rem;"></i>Fornecedores</a></li>
             </div>
             <div class="backup_div">
-            <li class="li-navbar"><a id="btnBackup" class="a-navbar btnBackup" href="#"><span class="material-symbols-outlined" style="padding-right: 1.2rem;">backup</span>Backup</a></li>
+            <li class="li-navbar"><a id="btnBackup" class="a-navbar btn_backup" href="#"><span class="material-symbols-outlined" style="padding-right: 1.2rem;">backup</span>Backup</a></li>
         </div>
 
         </ul>
@@ -51,38 +49,33 @@
         <div class="cabecalho">
             <h1 class="nome-empresa">ConstruHouse</h1>
             <div class="botoes" style="display: flex;">
-            <button id="btnAdicao" class="btn btn btn-lg" role="button" onclick="location.href='addVenda.html'"><span class="material-symbols-outlined">
-                add
-                </span></button>
             <!-- Seu JavaScript -->
 
-
-            <button type="button" class="btn btn-danger btn-lg" onclick="location.href='../index.html'"><span class="material-symbols-outlined">
+            <button type="button" class="btn btn-danger btn-lg" onclick="location.href='../../index.html'"><span class="material-symbols-outlined">
                 logout
                 </span></button>
             </div>
         </div>
        
         <hr>
+        <p class="subtitulo">Fornecedores</p>
         <div>
-        <table class="table table-bordered " id="tabelaVendas">
+        <table class="table table-bordered " id="tabelaFornecedores">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Hora</th>
-                    <th>Valor Total</th>
-                    
-                    <th>Ações</th>
+                    <th>Descrição</th>
                 </tr>
             </thead>
-            <tbody id="tabelaProdutos">
+            <tbody >
                 <!-- Os dados dos produtos serão inseridos aqui via JavaScript -->
             </tbody>
         </table>
     </div>
 
+
 <!-- Inclua seu arquivo "produto.js" após a inclusão da biblioteca jsPDF -->
-<script src="venda.js"></script>
+<script src="../Fornecedores/fornecedores.js"></script>
 
 </body>
 </html>

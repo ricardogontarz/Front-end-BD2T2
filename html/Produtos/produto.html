@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.104.2">
-    <title>Produtos | WeShoes</title>
+    <title>Produtos | ConstruHouse</title>
     <link rel="icon" href="/img/logo-weshoes.png" type="image/x-icon">
 
     <!-- CSS -->
@@ -31,37 +31,34 @@
 <body>
     <div id="navbar">
         <button id="toggleButton"><i class="bi bi-list" style="font-size: 3vh;"></i></button>
-        <ul class="ul-navbar">
-            <li class="li-navbar"><a class="a-navbar" href="../Venda/venda.html"><i class="bi bi-cart" style="padding-right: 20px;"></i>Vendas</a></li>
-            <li class="li-navbar"><a class="a-navbar" href="#"><i class="bi bi-file-earmark" style="padding-right: 20px;"></i>Produtos</a></li>
-            <li class="li-navbar"><a class="a-navbar" href="#"><i class="bi bi-people" style="padding-right: 20px;"></i>Funcionarios</a></li>
-            <li class="li-navbar"><a class="a-navbar" href="#"><i class="bi bi-speedometer" style="padding-right: 20px;"></i>Fornecedores</a></li>
-            <li class="li-navbar"><a class="a-navbar" href="#"><i class="bi bi-person-circle" style="padding-right: 20px;"></i>Usuário</a></li>
+        <ul class="ul-navbar"">
+            <div>
+            <li class="li-navbar"><a class="a-navbar" href="../Venda/venda.html"><i class="bi bi-cart" style="padding-right: 1.2rem;"></i>Vendas</a></li>
+            <li class="li-navbar"><a class="a-navbar" href="../Produtos/produto.html"><i class="bi bi-file-earmark" style="padding-right: 1.2rem;"></i>Produtos</a></li>
+            <li class="li-navbar"><a class="a-navbar" href="../Funcionarios/funcionarios.html"><i class="bi bi-people" style="padding-right: 1.2rem;"></i>Funcionarios</a></li>
+            <li class="li-navbar"><a class="a-navbar" href="../Fornecedores/fornecedores.html"><i class="bi bi-speedometer" style="padding-right: 1.2rem;"></i>Fornecedores</a></li>
+            </div>
+            <div class="backup_div">
+            <li class="li-navbar"><a id="btnBackup" class="a-navbar btn_backup" href="#"><span class="material-symbols-outlined" style="padding-right: 1.2rem;">backup</span>Backup</a></li>
+        </div>
+
         </ul>
     </div>
       
     <div id="conteudo">
         <div class="cabecalho">
-            <h1 class="nome-empresa"><a href="../Dashboard/dashboard.html" style="text-decoration: none; color: inherit;">Nome da Empresa</a></h1>
+            <h1 class="nome-empresa">ConstruHouse</h1>
             <div class="botoes" style="display: flex;">
-            <!-- Seu JavaScript -->
-<script>
-    document.getElementById('gerarPDFTabela').addEventListener('click', function() {
-      // Use AJAX para chamar o script PHP
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'pdf.php', true);
-      xhr.send();
-    });
-  </script>
 
-
-            <button type="button" class="btn btn-danger btn-lg" onclick="location.href='../../index.html'">Sair</button>
+            <button type="button" class="btn btn-danger btn-lg" onclick="location.href='../../index.html'"><span class="material-symbols-outlined">
+                logout
+                </span></button>
             </div>
         </div>
        
         <hr>
         <p class="subtitulo">Produtos</p>
-
+<div class="tabela">
         <table class="table table-bordered " id="tabelaProdutos">
             <thead>
                 <tr>
@@ -70,7 +67,6 @@
                     <th>Valor</th>
                     <th>Quantidade no estoque</th>
                     <th>Fornecedor</th>
-                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody id="tabelaProdutos">
@@ -78,7 +74,7 @@
             </tbody>
         </table>
 
-
+    </div>
 
 <!-- Inclua seu arquivo "produto.js" após a inclusão da biblioteca jsPDF -->
 <script src="../Produtos/produto.js"></script>

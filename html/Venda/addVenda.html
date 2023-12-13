@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2">
+    <title>Produtos | ConstruHouse</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"
+        integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/html2pdf.js@0.10.1/dist/html2pdf.bundle.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <!--DataTable-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+
+    <!--icons-->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link href="deletaVenda.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="navbar">
+        <button id="toggleButton"><i class="bi bi-list" style="font-size: 3vh;"></i></button>
+        <ul class="ul-navbar"">
+            <div>
+            <li class=" li-navbar"><a class="a-navbar" href="../Venda/venda.html"><i class="bi bi-cart"
+                    style="padding-right: 1.2rem;"></i>Vendas</a></li>
+            <li class="li-navbar"><a class="a-navbar" href="../Produtos/produto.html"><i class="bi bi-file-earmark"
+                        style="padding-right: 1.2rem;"></i>Produtos</a></li>
+            <li class="li-navbar"><a class="a-navbar" href="../Funcionarios/funcionarios.html"><i class="bi bi-people"
+                        style="padding-right: 1.2rem;"></i>Funcionarios</a></li>
+            <li class="li-navbar"><a class="a-navbar" href="../Fornecedores/fornecedores.html"><i
+                        class="bi bi-speedometer" style="padding-right: 1.2rem;"></i>Fornecedores</a></li>
+    </div>
+    <div class="backup_div">
+        <li class="li-navbar"><a id="btnBackup" class="a-navbar btn_backup" href="#"><span
+                    class="material-symbols-outlined" style="padding-right: 1.2rem;">backup</span>Backup</a></li>
+    </div>
+
+    </ul>
+    </div>
+
+    <div id="conteudo">
+        <div class="cabecalho">
+            <h1 class="nome-empresa">ConstruHouse</h1>
+            <div class="botoes" style="display: flex;">
+
+                <!-- Seu JavaScript -->
+
+
+                <a class="btn" href='../index.html' style="color: red; margin: auto;"><span
+                        class="material-symbols-outlined">
+                        logout
+                    </span></a>
+            </div>
+        </div>
+
+        <hr>
+        <div>
+            <form action="#" class="form-deleta" style="padding-top: 1.5rem; padding-bottom: 1.5rem; margin: 0 auto; max-width: 70rem;">
+            <label>
+                <h2>Adicione os dados da sua venda</h2>
+            </label>
+            <div>
+                <div class="form-group inputs-form">
+                    <label for="funcionario">Funcionário:
+                        <select name="funcionario" id="funcionario" class="form-control funcionario" aria-label="multiple select example">
+                            <option value="">Selecione um funcionário</option>
+                            <!-- As opções serão preenchidas dinamicamente via API -->
+                        </select>
+                    </label>
+                </div>
+                <div class="form-group">
+                    
+                    <input type="hidden" id="horario" name="horario" >
+                </div>
+            
+            <div id="itensContainer" class="form-group">
+                <label for="itens">Adicione os Itens:</label>
+                <div class="input-group input-group-sm mb-3 item-container">
+                    <select name="itens" class="form-control itens" aria-label="multiple select example" id="itens" >
+                        <option value="">Selecione um item</option>
+                        <!-- As opções serão preenchidas dinamicamente via API -->
+                    </select>
+                    <input type="number" min="1" placeholder="Quantidade" class="form-control" id="quantidadeInput" aria-label="Sizing example input">
+                </div>
+            </div>
+            
+            <button class="btn btn-link btnAddItem" type="button" id="btnAddItem">
+                <span class="material-symbols-outlined">add</span>
+            </button>
+            
+            <div class="form-group">
+               
+                <input type="hidden" placeholder="Digite o Total" class="form-control" id="total" step="0.01" pattern="\d+(\.\d{1,2})?">
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmacao">
+                    <h5>Deseja Cadastrar esta venda?</h5>
+                    <a href="../Venda/venda.html" class="btn btn-light">Cancelar</a>
+                    <button class="btn btn-primary" type="submit" id="cadastrarBtn">Cadastrar</button>
+                </label>
+            </div>
+            </form>
+            </div>
+        
+
+        <!-- Inclua seu arquivo "produto.js" após a inclusão da biblioteca jsPDF -->
+        <script src="../Venda/addVenda.js"></script>
+
+</body>
+
+</html>
